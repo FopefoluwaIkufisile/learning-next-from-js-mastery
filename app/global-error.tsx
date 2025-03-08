@@ -2,12 +2,30 @@
 
 import { useEffect } from 'react';
 
-export default function GlobalError({error}: {error: Error & { digest?: string };
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
 }) {
+  useEffect(() => {
+    // Log the error to an error reporting service
+    console.error(error);
+  }, [error]);
 
   return (
-    <div>
-      <h2>Global Error</h2>
+    <div className='flex flex-col justify-center items-center h-screen bg-black-50'>
+      <h2 className='mb-2'>This is the Global error, something went wrong!
+      </h2>
+      <button
+        onClick={
+          // Attempt to recover by trying to re-render the segment
+          () => reset()
+        }
+       className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer'>
+        Try again
+      </button>
     </div>
   );
 }

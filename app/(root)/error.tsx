@@ -15,14 +15,14 @@ export default function Error({
   }, [error]);
 
   return (
-    <div>
-      <h2>Something went wrong!</h2>
+    <div className='flex flex-col justify-center items-center h-screen bg-black-50'>
+      <h2 className='mb-2'>Something went wrong!</h2>
       <button
         onClick={
           // Attempt to recover by trying to re-render the segment
           () => reset()
         }
-      >
+       className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded hover:cursor-pointer'>
         Try again
       </button>
     </div>
