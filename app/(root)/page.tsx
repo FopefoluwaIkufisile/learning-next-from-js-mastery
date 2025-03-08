@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Hello from "../components/hello";
 
-export default function Home() {
+export default async function Home() {
+
+  await new Promise((resolve) => setTimeout(resolve, 2000));
 
   console.log(`What am 1? Server or Client?`)
   return (
